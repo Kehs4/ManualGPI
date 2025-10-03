@@ -5,36 +5,67 @@
   font-family: 'Poppins', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 body {
-  background: linear-gradient(65deg, rgb(32, 12, 1) 0%, rgba(0,0,0,1) 100%);
+  /*background-color: #240d02; */
+  background-color: black;
+  overflow: hidden;
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border: 1px solid #dfdfdf6c;
+  border-radius: 50px;
   color: white;
-  padding: 20px;
+  margin-top: 25px;
+  width: 80%;
+  margin: 25px auto;
+  padding: 10px 20px;
   box-shadow: 0 0 10px 5px rgba(68, 26, 1, 0.726);
+}
+
+.header-box-logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.header-box-menu {
+  display: flex; 
+  gap: 20px;
+  align-items: center;
+}
+
+.header-box-menu a:hover {
+  color: #ff6600;
+  transition: color 0.3s ease;
+  text-shadow: 3px 8px 2px rgba(119, 52, 8, 0.281);
+
 }
 
 .btn-search-manual {
   padding: 8px 16px;
-  background-color: rgba(27, 25, 25, 0.404);
-  border-radius: 7px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 400;
-  color: white;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   border: 1px solid #ffffff;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .btn-search-manual:hover {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 10px 3px rgba(42, 3, 150, 0.726);
-  color: black;
-  transition: background-color 0.2s ease-in;
+  background-color: #360404;
+  box-shadow: 0 0 10px 3px rgba(150, 74, 3, 0.726);
+  color: rgb(255, 255, 255);
+  transition: box-shadow background-color 0.2s ease-in;
 }
 
 .home-container {
@@ -45,6 +76,7 @@ body {
   justify-content: center;
   height: 100vh;
   width: 100%;
+
 }
 
 .home-box-text {
@@ -59,6 +91,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  user-select: none;
 }
 
 .text-2xl {
@@ -66,10 +99,80 @@ body {
   font-weight: 600;
   margin-bottom: 12px;
   text-align: center;
+  user-select: none;
 }
 
 .text-2x2 {
   margin-bottom: 30px;
   font-size: 2.2rem;
+  user-select: none;
 }
 
+.manuals-container {
+  width: 100%;
+  padding: 0 5%;
+  margin-top: 40px;
+}
+
+.manuals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.manual-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.manual-card {
+  background-color: rgba(45, 24, 9, 0.4);
+  border: 1px solid #dfdfdf6c;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.manual-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px 5px rgba(68, 26, 1, 0.726);
+}
+
+.manual-card-icon {
+  margin-bottom: 16px;
+  color: #ff6600;
+  background-color: rgba(255, 102, 0, 0.1);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.manual-card:hover .manual-card-icon {
+  background-color: rgba(255, 102, 0, 0.2);
+}
+
+.manual-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.manual-card-description {
+  font-size: 0.9rem;
+  color: #d1ccc9;
+  line-height: 1.5;
+}
