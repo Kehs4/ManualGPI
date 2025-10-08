@@ -202,7 +202,6 @@ body {
 
 @media (max-width: 768px) {
   .text-2xl {
-    margin-top: -150px;
     padding: 15px 5%;
     font-size: 3rem;
   }
@@ -279,7 +278,7 @@ body {
   }
 
   .input-search-manual{
-    width: 300px;
+    width: 180px;
     font-size: 0.7rem;
   }
 }
