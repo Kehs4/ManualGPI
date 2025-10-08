@@ -13,21 +13,22 @@ a {
 body {
   /*background-color: #240d02; */
   background-color: black;
-  overflow: hidden;
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #dfdfdf6c;
+  border: 1px solid #fcfcfc2d;
   border-radius: 50px;
+  background-color: #14141479;
   color: white;
   margin-top: 25px;
   width: 80%;
   margin: 25px auto;
   padding: 10px 20px;
-  box-shadow: 0 0 10px 5px rgba(68, 26, 1, 0.726);
+  box-shadow: 0 0 10px 5px rgba(56, 48, 43, 0.726);
+  position: relative; /* Adicionado para o posicionamento do menu mobile */
 }
 
 .header-box-logo {
@@ -38,8 +39,12 @@ body {
 
 .header-box-menu {
   display: flex; 
-  gap: 20px;
   align-items: center;
+}
+
+.header-box-menu nav {
+  display: flex;
+  gap: 20px;
 }
 
 .header-box-menu a:hover {
@@ -49,23 +54,32 @@ body {
 
 }
 
-.btn-search-manual {
+.hamburger-menu {
+  display: none; /* Escondido por padrão */
+  cursor: pointer;
+  z-index: 1001; /* Garante que fique acima de outros elementos */
+}
+
+.input-search-manual {
   padding: 8px 16px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.226);
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 400;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
+  color: rgb(255, 255, 255);
   border: 1px solid #ffffff;
   transition: background-color 0.2s ease-in-out;
+  outline: none;
 }
 
-.btn-search-manual:hover {
-  background-color: #360404;
-  box-shadow: 0 0 10px 3px rgba(150, 74, 3, 0.726);
-  color: rgb(255, 255, 255);
+.input-search-manual:hover:not(:disabled) {
+  background-color: #222222;
+  box-shadow: 0 0 10px 3px rgba(172, 172, 171, 0.24);
   transition: box-shadow background-color 0.2s ease-in;
+}
+
+.input-search-manual:disabled {
+  cursor: not-allowed;
 }
 
 .home-container {
@@ -76,14 +90,15 @@ body {
   justify-content: center;
   height: 100vh;
   width: 100%;
-
 }
 
 .home-box-text {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 0 15%;
 }
 
 .text-gradient span {
@@ -106,6 +121,7 @@ body {
   margin-bottom: 30px;
   font-size: 2.2rem;
   user-select: none;
+  padding: 0 2%;
 }
 
 .manuals-container {
@@ -129,8 +145,8 @@ body {
 }
 
 .manual-card {
-  background-color: rgba(45, 24, 9, 0.4);
-  border: 1px solid #dfdfdf6c;
+  background-color: rgba(26, 26, 26, 0.4);
+  border: 1px solid #72664f6c;
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -144,12 +160,12 @@ body {
 
 .manual-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px 5px rgba(68, 26, 1, 0.726);
+  box-shadow: 0 10px 20px 5px rgba(54, 50, 48, 0.329);
 }
 
 .manual-card-icon {
   margin-bottom: 16px;
-  color: #ff6600;
+  color: #bd4f07;
   background-color: rgba(255, 102, 0, 0.1);
   border-radius: 50%;
   width: 80px;
@@ -161,7 +177,13 @@ body {
 }
 
 .manual-card:hover .manual-card-icon {
-  background-color: rgba(255, 102, 0, 0.2);
+  background-color: rgba(102, 67, 21, 0.507);
+  color: #ff6600;
+  border: 1px solid #e2dcd1c2;
+}
+
+.manual-card:hover {
+  border: 1px solid #8d8c89c2;
 }
 
 .manual-card-title {
@@ -175,4 +197,89 @@ body {
   font-size: 0.9rem;
   color: #d1ccc9;
   line-height: 1.5;
+}
+
+
+@media (max-width: 768px) {
+  .text-2xl {
+    margin-top: -150px;
+    padding: 15px 5%;
+    font-size: 3rem;
+  }
+  .text-2x2 {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin-left: auto;
+  }
+  .manual-card-title {
+    font-size: 1.2rem;
+  }
+  .manual-card-description {
+    font-size: 0.8rem;
+  }
+
+  .header-container {
+    margin-top: 15px;
+    width: 90%;
+  }
+
+  .header-box-logo img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .header-box-menu a {
+    font-size: 0.85rem;
+  }
+
+  .input-search-manual {
+    font-size: 0.8rem;
+    min-height: 35px;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .header-box-menu {
+    display: none; /* Esconde o menu principal */
+    position: absolute;
+    top: 65px; /* Ajuste conforme a altura do seu header */
+    left: 0;
+    right: 0;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .header-box-menu.open {
+    display: block; /* Mostra o menu quando a classe 'open' está presente */
+  }
+
+  .header-box-menu nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+  }
+
+  .header-box-menu nav a {
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hamburger-menu {
+    display: block; /* Mostra o ícone do menu hambúrguer */
+    margin-top: 4px;
+    padding: 0 20px;
+    margin-right: auto;
+    cursor: pointer
+  }
+
+  .input-search-manual{
+    width: 300px;
+    font-size: 0.7rem;
+  }
 }

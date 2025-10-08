@@ -1,5 +1,6 @@
 import '../App.css'
 import BlurText from "../../components/BlurText";
+import { useState } from 'react';
 import { Link } from 'react-router';
 
 const manualsData = [
@@ -21,28 +22,76 @@ const manualsData = [
     description: 'Procedimentos necessários para a operação do Totem de Atendimento no Vertis.',
     pdfUrl: '/manuals/Vertis - Totem de Atendimento.pdf',
   },
+  {
+    id: 4,
+    title: 'Apoio Interno',
+    description: 'Como funciona as solicitações de apoio interno no Vertis.',
+    pdfUrl: '/manuals/Vertis - Solicitação por Apoio Interno.pdf',
+  },
+  {
+    id: 5,
+    title: 'Integração Veros',
+    description: 'Como funciona a integração com o Veros no Vertis.',
+    pdfUrl: '/manuals/Vertis - Integração Veros.pdf',
+  },
+  {
+    id: 6,
+    title: 'Painel de Chamadas',
+    description: 'Como funciona o painel de chamadas no Vertis.',
+    pdfUrl: '/manuals/Vertis - Painel de Chamadas.pdf',
+  },
+  {
+    id: 7,
+    title: 'Solicitação de Exame via Portal',
+    description: 'Como funciona a solicitação de exame via portal no Vertis.',
+    pdfUrl: '/manuals/Vertis - Solicitação de Exames.pdf',
+  },
 ];
 
 function ManualsTec() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const filteredManuals = manualsData.filter(manual =>
+    manual.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    manual.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       <div className='header-container'>
         <div className='header-box-logo'>
+          <Link to={'/'}>
           <img src="https://v1.laudosonline.com.br/hom/assets/images/favicon.png" sizes="32x32" type="image/png" />
+          </Link>
         </div>
-        <div className='header-box-menu'>
-          <Link to={'/manuals'}>
-          <span>Manuais Técnicos</span>
-          </Link>
+        <div className={`header-box-menu ${isMenuOpen ? 'open' : ''}`}>
+          <nav>
+            <Link to={'/manuals'}>
+              <span>Manuais Técnicos</span>
+            </Link>
+            <Link to={'/apresentacoes'}>
+              <span>Apresentações</span>
+            </Link>
+          </nav>
+        </div>
 
-          <Link to={'/apresentacoes'}>
-          <span>Apresentações</span>
-          </Link>
-
+        <div className="hamburger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </div>
 
         <div>
-          <button className='btn-search-manual'>Pesquisar</button>
+          <input
+            type="text"
+            className='input-search-manual'
+            placeholder="Pesquisar manual..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
 
@@ -58,7 +107,7 @@ function ManualsTec() {
         </div>
 
         <div className='manuals-grid'>
-          {manualsData.map((manual) => (
+          {filteredManuals.map((manual) => (
             <a key={manual.id} href={manual.pdfUrl} target="_blank" rel="noopener noreferrer" className="manual-card-link">
               <div className='manual-card'>
                 <div className='manual-card-icon'>
