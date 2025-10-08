@@ -68,7 +68,7 @@ function ManualHome() {
               text="VER MANUAIS "
               onHover="speedUp"
               spinDuration={20}
-              className="custom-class"
+              className="manuals-button"
             />
           </Link>
 

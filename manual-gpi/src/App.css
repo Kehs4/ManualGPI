@@ -281,4 +281,21 @@ body {
     width: 180px;
     font-size: 0.7rem;
   }
+
+  .text-2xl {
+    font-size: 2.2rem;
+  }
+
+  .text-2x2 {
+    font-size: 1rem;
+  }
+
+  .manual-card-title {
+    font-size: 1rem;
+  }
+
+  .manuals-button {
+    max-width: 130px;
+    max-height: 130px;
+  }
 }
